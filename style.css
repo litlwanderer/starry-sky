@@ -1,0 +1,39 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+.starrysky {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.starrysky .starrypic {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: auto; /* keeps your pixel art aspect ratio */
+}
+
+#nightSkyBG{
+    height: 103%;
+    width: auto;
+}
+
+#mountains{
+    top: 250px;
+}
+
+.letterbox-left, .letterbox-right {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: calc(50% - 25vh);
+    background: #0a0e27;
+}
+
+.letterbox-left { left: 0; }
+.letterbox-right { right: 0; }
