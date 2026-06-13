@@ -2,6 +2,7 @@ body, html {
     height: 100dvh;
     margin: 0;
     overflow: hidden;
+    background: #0a0e27;
 }
 
 .starrysky {

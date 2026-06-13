@@ -12,6 +12,7 @@ var screenXcentre = window.innerWidth/2;
 var screenYcentre = window.innerHeight/2;
 var offsetX;
 var offsetY;
+var isGyroActive = false;
 
 //handler for mouse input
 addEventListener("mousemove", (event) => {
@@ -23,10 +24,12 @@ addEventListener("mousemove", (event) => {
 //handler for touch input. the istouch is in order to trigger a transition
 //if it's a tap (so the stars don't just jump position)
 addEventListener("touchstart", (event) => {
+    if (isGyroActive){return;} //touch is only fallback for gyro!
     document.querySelector(".starrysky").classList.add("is-touch");
 });
 
 addEventListener("touchmove", (event) => {
+    if (isGyroActive){return;}
     //remove that istouch transition trigger if dragging
     document.querySelector(".starrysky").classList.remove("is-touch");
     offsetX = event.touches[0].clientX-screenXcentre;
@@ -51,6 +54,10 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
   } else {
     // Everyone else
     window.addEventListener('deviceorientation', (event)=>{
+        if (event.gamma !== null && event.beta !== null) {
+            isGyroActive = true;
+        }
+    
         gyroMultiplier = 8; //because the parallax barely moves w/ gyro
         offsetX = event.gamma*gyroMultiplier;
         offsetY = event.beta*gyroMultiplier;
