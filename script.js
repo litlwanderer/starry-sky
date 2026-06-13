@@ -14,8 +14,10 @@ var offsetX;
 var offsetY;
 var isGyroActive = false;
 
-//handler for mouse input
+//handler for mouse input. this also gets triggered by a tap
+//which is why when I have touchstart but not touchmove, this gets called and does the parallax
 addEventListener("mousemove", (event) => {
+    if (isGyroActive){return;} //other input is only fallback for gyro!
     offsetX = event.clientX-screenXcentre;
     offsetY = event.clientY-screenYcentre;
     parallax();
@@ -24,7 +26,7 @@ addEventListener("mousemove", (event) => {
 //handler for touch input. the istouch is in order to trigger a transition
 //if it's a tap (so the stars don't just jump position)
 addEventListener("touchstart", (event) => {
-    if (isGyroActive){return;} //touch is only fallback for gyro!
+    if (isGyroActive){return;} //touch is only fallback for gyro
     document.querySelector(".starrysky").classList.add("is-touch");
 });
 
