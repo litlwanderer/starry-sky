@@ -14,8 +14,8 @@ body, html {
 .starrypic {
     position: absolute;
     top: 0;
+    width: auto;
     height: 100%;
-    width: auto; /* keeps your pixel art aspect ratio */
 }
 
 .starrysky.is-touch .starrypic {
@@ -35,7 +35,7 @@ body, html {
     position: fixed;
     top: 0;
     height: 100%;
-    width: calc(50% - 25vh);
+    width: calc(50% - 25dvh);
     background: #0a0e27;
 }
 
