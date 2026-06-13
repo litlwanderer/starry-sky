@@ -37,6 +37,26 @@ addEventListener("transitionend", (event) => {
     document.querySelector(".starrysky").classList.remove("is-touch");
 });
 
+//handler for gyro input, credit: https://dev.to/trekhleb/
+if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    // iOS 13+, totally untested, sorry iPhone peeps this may not work, i have no idea either way
+    DeviceOrientationEvent.requestPermission()
+      .then((state) => {
+        if (state === 'granted') {
+          window.addEventListener('deviceorientation', handleOrientation);
+        }
+      })
+      .catch(console.error);
+  } else {
+    // Everyone else
+    window.addEventListener('deviceorientation', (event)=>{
+        offsetX = event.gamma;
+        offsetY = event.beta;
+        parallax();
+    });
+ }
+
+
 //tweak the hardcoded floats to adjust the parallax effect
 function parallax(){
     nightSkyBG.style.translate = `${offsetX*0.005}px ${offsetY*0.005}px`;
