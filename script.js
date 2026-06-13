@@ -51,7 +51,7 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
   } else {
     // Everyone else
     window.addEventListener('deviceorientation', (event)=>{
-        gyroMultiplier = 5; //because the parallax barely moves w/ gyro
+        gyroMultiplier = 8; //because the parallax barely moves w/ gyro
         offsetX = event.gamma*gyroMultiplier;
         offsetY = event.beta*gyroMultiplier;
         console.log(event.gamma, event.beta);
