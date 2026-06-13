@@ -11,11 +11,15 @@ body, html {
     justify-content: center;
 }
 
-.starrysky .starrypic {
+.starrypic {
     position: absolute;
     top: 0;
     height: 100%;
     width: auto; /* keeps your pixel art aspect ratio */
+}
+
+.starrysky.is-touch .starrypic {
+    transition: translate 0.3s ease;
 }
 
 #nightSkyBG{
