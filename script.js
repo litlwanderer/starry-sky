@@ -24,7 +24,6 @@ addEventListener("mousemove", (event) => {
 //if it's a tap (so the stars don't just jump position)
 addEventListener("touchstart", (event) => {
     document.querySelector(".starrysky").classList.add("is-touch");
-    toggleFullScreen(skydiv);
 });
 
 addEventListener("touchmove", (event) => {
@@ -52,8 +51,10 @@ if (typeof DeviceOrientationEvent.requestPermission === 'function') {
   } else {
     // Everyone else
     window.addEventListener('deviceorientation', (event)=>{
-        offsetX = event.gamma;
-        offsetY = event.beta;
+        gyroMultiplier = 5; //because the parallax barely moves w/ gyro
+        offsetX = event.gamma*gyroMultiplier;
+        offsetY = event.beta*gyroMultiplier;
+        console.log(event.gamma, event.beta);
         parallax();
     });
  }
