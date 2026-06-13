@@ -6,6 +6,7 @@ const bigStars = document.getElementById("bigStars");
 const stars2 = document.getElementById("stars2");
 const stars3 = document.getElementById("stars3");
 const mountains = document.getElementById("mountains");
+const skydiv = document.getElementById("skydiv");
 
 var screenXcentre = window.innerWidth/2;
 var screenYcentre = window.innerHeight/2;
@@ -23,6 +24,7 @@ addEventListener("mousemove", (event) => {
 //if it's a tap (so the stars don't just jump position)
 addEventListener("touchstart", (event) => {
     document.querySelector(".starrysky").classList.add("is-touch");
+    toggleFullScreen(skydiv);
 });
 
 addEventListener("touchmove", (event) => {
